@@ -23,13 +23,17 @@ export class JotaDebugPanel {
       z-index: 1000;
     `;
 
-    for (const state of ["IDLE", "WALK", "RUN", "SIT"]) {
+    for (const state of ["IDLE", "WALK", "RUN", "SIT", "SLEEP", "WAKE"]) {
       const button = document.createElement("button");
       button.textContent = state;
       button.type = "button";
 
       button.addEventListener("click", () => {
-        if (state === "SIT") {
+        if (state === "WAKE") {
+          this.actions.WAKE?.();
+        } else if (state === "SLEEP") {
+          this.actions.SLEEP?.();
+        } else if (state === "SIT") {
           this.actions.SIT?.();
         } else if (!this.behavior.actionLocked) {
           this.behavior.command(state, 5000);
