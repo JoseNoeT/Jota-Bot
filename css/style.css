@@ -25,7 +25,6 @@ h1 {
   width: 180px;
   margin: 55px auto 25px;
   cursor: pointer;
-  animation: float 3s ease-in-out infinite;
 }
 
 .antenna {
@@ -85,6 +84,17 @@ h1 {
   border-radius: 50%;
   background: #00e5ff;
   box-shadow: 0 0 20px #00e5ff;
+}
+
+/* La flotación pertenece solo al reposo, no al desplazamiento ni a SIT. */
+#jota.robot:not(.walking):not(.sit-active) {
+  animation: float 3s ease-in-out infinite;
+}
+
+#jota.robot.walking,
+#jota.robot.sit-active {
+  animation: none;
+  transform: translateY(0);
 }
 
 @keyframes float {
