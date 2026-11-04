@@ -87,12 +87,13 @@ h1 {
 }
 
 /* La flotación pertenece solo al reposo, no al desplazamiento ni a SIT. */
-#jota.robot:not(.walking):not(.sit-active) {
+#jota.robot:not(.walking):not(.sit-active):not(.sleep-active) {
   animation: float 3s ease-in-out infinite;
 }
 
 #jota.robot.walking,
-#jota.robot.sit-active {
+#jota.robot.sit-active,
+#jota.robot.sleep-active {
   animation: none;
   transform: translateY(0);
 }
