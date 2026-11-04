@@ -37,7 +37,8 @@ export class JotaLocomotion {
   }
 
   tick(time) {
-    if (this.robot.classList.contains("sit-active")) {
+    if (this.robot.classList.contains("sit-active") ||
+        this.robot.classList.contains("sleep-active")) {
       this.lastTime = time;
       this.robot.classList.remove("walking");
       requestAnimationFrame(this.tick);
