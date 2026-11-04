@@ -78,8 +78,8 @@
   transform-origin: center bottom;
 }
 
-/* Sueño: conservar el apoyo y evitar cambios de tamaño durante los sprites. */
+/* SLEEP usa sprites con márgenes transparentes internos: no reducirlos otra vez. */
 #jota.sleep-active .jota-avatar {
   transform-origin: center bottom;
-  transform: scale(0.72);
+  transform: none;
 }
