@@ -70,3 +70,10 @@
 #jota.walking::after {
   width: 62%;
 }
+
+/* SIT: mantener la escala visual del personaje al cambiar de sprites.
+   El punto de apoyo permanece en el centro inferior. */
+#jota.sit-active .jota-avatar {
+  transform: scale(0.72);
+  transform-origin: center bottom;
+}
