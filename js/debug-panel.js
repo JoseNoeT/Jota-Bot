@@ -1,6 +1,7 @@
 export class JotaDebugPanel {
-  constructor(behavior) {
+  constructor(behavior, actions = {}) {
     this.behavior = behavior;
+    this.actions = actions;
     this.element = document.createElement("section");
 
     this.element.setAttribute(
@@ -22,13 +23,17 @@ export class JotaDebugPanel {
       z-index: 1000;
     `;
 
-    for (const state of ["IDLE", "WALK", "RUN"]) {
+    for (const state of ["IDLE", "WALK", "RUN", "SIT"]) {
       const button = document.createElement("button");
       button.textContent = state;
       button.type = "button";
 
       button.addEventListener("click", () => {
-        this.behavior.command(state, 5000);
+        if (state === "SIT") {
+          this.actions.SIT?.();
+        } else if (!this.behavior.actionLocked) {
+          this.behavior.command(state, 5000);
+        }
       });
 
       this.element.appendChild(button);
