@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body style="background:repeating-conic-gradient(#bbb 0% 25%,white 0% 50%) 0 0/24px 24px">
+<img id="avatar" src="assets/avatars/jota_idle.png" style="width:220px">
+<pre id="resultado"></pre>
+<script>
+const img = document.getElementById("avatar");
+img.onload = () => {
+  const c = document.createElement("canvas");
+  c.width = img.naturalWidth;
+  c.height = img.naturalHeight;
+  const ctx = c.getContext("2d");
+  ctx.drawImage(img, 0, 0);
+  const data = ctx.getImageData(0, 0, c.width, c.height).data;
+  let transparentes = 0;
+  for (let i = 3; i < data.length; i += 4) {
+    if (data[i] === 0) transparentes++;
+  }
+  document.getElementById("resultado").textContent =
+    "Píxeles transparentes: " + transparentes +
+    "\nTotal de píxeles: " + (c.width * c.height);
+};
+</script>
+</body>
+</html>

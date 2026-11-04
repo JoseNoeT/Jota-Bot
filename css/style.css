@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #080d18;
+  color: #e6faff;
+  font-family: system-ui, sans-serif;
+}
+
+main {
+  text-align: center;
+}
+
+h1 {
+  color: #00e5ff;
+  letter-spacing: 5px;
+}
+
+.robot {
+  width: 180px;
+  margin: 55px auto 25px;
+  cursor: pointer;
+  animation: float 3s ease-in-out infinite;
+}
+
+.antenna {
+  width: 8px;
+  height: 28px;
+  background: #00e5ff;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.head {
+  height: 120px;
+  border: 4px solid #00e5ff;
+  border-radius: 45px;
+  background: #14263b;
+  box-shadow: 0 0 30px #00e5ff55;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.eyes {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.eye {
+  width: 28px;
+  height: 35px;
+  background: #00e5ff;
+  border-radius: 50%;
+  animation: blink 5s infinite;
+}
+
+.mouth {
+  width: 45px;
+  height: 12px;
+  margin: 0 auto;
+  border-bottom: 4px solid #00e5ff;
+  border-radius: 50%;
+}
+
+.body {
+  width: 115px;
+  height: 85px;
+  background: #14263b;
+  border: 4px solid #00e5ff;
+  border-radius: 25px;
+  margin: 8px auto;
+}
+
+.core {
+  width: 35px;
+  height: 35px;
+  margin: 20px auto;
+  border-radius: 50%;
+  background: #00e5ff;
+  box-shadow: 0 0 20px #00e5ff;
+}
+
+@keyframes float {
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes blink {
+  0%, 45%, 49%, 100% { transform: scaleY(1); }
+  47% { transform: scaleY(0.1); }
+}
+
+.robot.happy .mouth {
+  height: 20px;
+  border-bottom-width: 6px;
+}
+
+.robot.thinking .eye {
+  animation: thinking-eyes 0.8s ease-in-out infinite alternate;
+}
+
+.robot.thinking .core {
+  animation: thinking-core 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes thinking-eyes {
+  from { transform: translateX(-5px); }
+  to { transform: translateX(5px); }
+}
+
+@keyframes thinking-core {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
+/* Piernas de Jota */
+.legs {
+  display: flex;
+  justify-content: space-evenly;
+  width: 110px;
+  margin: -2px auto 0;
+}
+
+.leg {
+  width: 26px;
+  height: 42px;
+  background: #14263b;
+  border: 3px solid #00e5ff;
+  border-radius: 8px 8px 14px 14px;
+  transform-origin: top center;
+}
+
+.robot.walking .leg-left {
+  animation: step-left 0.45s ease-in-out infinite alternate;
+}
+
+.robot.walking .leg-right {
+  animation: step-right 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes step-left {
+  from { transform: rotate(-25deg); }
+  to { transform: rotate(25deg); }
+}
+
+@keyframes step-right {
+  from { transform: rotate(25deg); }
+  to { transform: rotate(-25deg); }
+}

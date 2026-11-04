@@ -1,0 +1,72 @@
+/* Jota Bot: avatar compacto */
+#jota.robot {
+  width: 72px;
+  height: auto;
+  margin: 55px auto 25px;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#jota.robot:active {
+  cursor: grabbing;
+}
+
+.jota-avatar {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Balanceo provisional al caminar */
+#jota.walking .jota-avatar {
+  animation: jota-step 0.36s ease-in-out infinite alternate;
+  transform-origin: center bottom;
+}
+
+@keyframes jota-step {
+  0% {
+    transform: translateY(0) rotate(-4deg);
+  }
+  100% {
+    transform: translateY(-3px) rotate(4deg);
+  }
+}
+
+#jota:not(.walking) .jota-avatar {
+  animation: none;
+}
+
+/* Caminata con fotogramas: desactivar balanceo antiguo */
+#jota.walking .jota-avatar {
+  animation: none;
+  transform: none;
+}
+
+/* Sombra de contacto independiente del avatar */
+#jota.robot {
+  position: relative;
+}
+
+#jota.robot::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 1px;
+  width: 56%;
+  height: 7px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  filter: blur(3px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+#jota.walking::after {
+  width: 62%;
+}

@@ -1,0 +1,31 @@
+# Respaldos locales
+backups/
+*.bak
+
+# Dependencias
+node_modules/
+
+# Archivos temporales
+*.log
+*.tmp
+.DS_Store
+
+# Credenciales
+.env
+.env.*
+!.env.example
+
+# Caché
+__pycache__/
+*.pyc
+
+# Respaldos adicionales
+*.bak[0-9]*
+
+# Fotogramas provisionales
+assets/animations/sit/frame_*.png
+
+# Vistas previas
+assets/animations/sit/secuencia_previa.png
+assets/animations/sit/vista_previa.png
+assets/animations/walk/vista_previa.png

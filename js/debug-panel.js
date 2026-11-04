@@ -1,0 +1,41 @@
+export class JotaDebugPanel {
+  constructor(behavior) {
+    this.behavior = behavior;
+    this.element = document.createElement("section");
+
+    this.element.setAttribute(
+      "aria-label",
+      "Controles de prueba de Jota"
+    );
+
+    this.element.style.cssText = `
+      position: fixed;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      padding: 10px;
+      background: #172334;
+      border: 1px solid #39d5e5;
+      border-radius: 12px;
+      z-index: 1000;
+    `;
+
+    for (const state of ["IDLE", "WALK", "RUN"]) {
+      const button = document.createElement("button");
+      button.textContent = state;
+      button.type = "button";
+
+      button.addEventListener("click", () => {
+        this.behavior.command(state, 5000);
+      });
+
+      this.element.appendChild(button);
+    }
+  }
+
+  mount() {
+    document.body.appendChild(this.element);
+  }
+}
